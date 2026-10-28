@@ -1,0 +1,7 @@
+{
+  "appId": "com.projectsvanguard.minigames",
+  "appName": "Vanguard MiniGames",
+  "webDir": ".",
+  "bundledWebRuntime": false,
+  "android": { "allowMixedContent": false }
+}
