@@ -29,7 +29,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
       - name: Install dependencies
         run: npm install
       - name: Build installer
@@ -61,6 +61,8 @@ jobs:
           java-version: "21"
       - name: Setup Android SDK
         uses: android-actions/setup-android@v3
+        with:
+          tools: platform-tools
       - name: Install dependencies
         run: npm install
       - name: Prepare Capacitor web assets
@@ -100,8 +102,4 @@ jobs:
           name: Vanguard MiniGames ${{ github.ref_name }}
           generate_release_notes: true
           files: |
-            packages/**/*.exe
-            packages/**/*.deb
-            packages/**/*.AppImage
-            packages/**/*.dmg
-            packages/**/*.apk
+            packages/*
