@@ -1,0 +1,36 @@
+{
+  "name": "vanguard-minigames",
+  "version": "1.0.0",
+  "description": "Vanguard MiniGames — mini-games, coins, leaderboard and friends",
+  "main": "electron/main.cjs",
+  "author": "Projects Vanguard",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "web:serve": "http-server . -p 4173",
+    "android:sync": "cap sync android",
+    "android:open": "cap open android",
+    "dist:win": "electron-builder --win nsis",
+    "dist:linux": "electron-builder --linux deb AppImage",
+    "dist:mac": "electron-builder --mac dmg",
+    "dist": "electron-builder"
+  },
+  "devDependencies": {
+    "@capacitor/android": "^7.4.3",
+    "@capacitor/cli": "^7.4.3",
+    "electron": "^37.2.6",
+    "electron-builder": "^26.0.12",
+    "http-server": "^14.1.1"
+  },
+  "build": {
+    "appId": "com.projectsvanguard.minigames",
+    "productName": "Vanguard MiniGames",
+    "directories": { "output": "dist" },
+    "files": ["index.html", "electron/**/*", "capacitor.config.json", "package.json"],
+    "asar": true,
+    "win": { "target": ["nsis"], "artifactName": "Vanguard-MiniGames-Setup-${version}.${ext}" },
+    "nsis": { "oneClick": false, "allowToChangeInstallationDirectory": true },
+    "linux": { "target": ["deb", "AppImage"], "category": "Game", "artifactName": "Vanguard-MiniGames-${version}-${arch}.${ext}" },
+    "mac": { "target": ["dmg"], "category": "public.app-category.games", "artifactName": "Vanguard-MiniGames-${version}-${arch}.${ext}" }
+  }
+}
